@@ -24,8 +24,8 @@ public class Users {
 	@NonNull
     private Boolean enabled;
 	
-	@NonNull
-    private String email;
+	//@NonNull
+    //private String email;
 	
 	@NonNull
 	private Date dataCadastro;

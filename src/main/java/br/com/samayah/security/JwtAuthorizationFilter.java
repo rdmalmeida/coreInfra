@@ -7,7 +7,6 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.UnsupportedJwtException;
 import io.jsonwebtoken.security.SignatureException;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -47,7 +46,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
     	String token = request.getHeader(SecurityConstants.TOKEN_HEADER);
-        if (StringUtils.isNotEmpty(token) && token.startsWith(SecurityConstants.TOKEN_PREFIX)) {
+        if (token!= null && token.startsWith(SecurityConstants.TOKEN_PREFIX)) {
             try {
             	Jws<Claims> parsedToken = getParsedToken(token);
 
@@ -60,7 +59,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
                     .map(authority -> new SimpleGrantedAuthority((String) authority))
                     .collect(Collectors.toList());
                 
-                if (StringUtils.isNotEmpty(username)) {
+                if (username!= null && !username.equals("")) {
                     return new UsernamePasswordAuthenticationToken(username, null, authorities);
                 }
             } catch (ExpiredJwtException exception) {

@@ -15,7 +15,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import br.com.samayah.services.MyUserDetailsService;
+import br.com.samayah.service.MyUserDetailsService;
+
 
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
@@ -49,7 +50,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-		 //auth.userDetailsService(userDetailsService())
 		auth.userDetailsService(userDetailsService)
 		 .passwordEncoder(passwordEncoder());
 	}

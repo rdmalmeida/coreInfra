@@ -1,8 +1,9 @@
 package br.com.samayah.security;
 
-public final class SecurityConstants {
+public class SecurityConstants {
 
-    public static final String AUTH_LOGIN_URL = "/api/v1/authenticate";
+	
+	public static final String AUTH_LOGIN_URL = "/api/authenticate";
 
     // Signing key for HS512 algorithm
     // You can use the page http://www.allkeysgenerator.com/ to generate all kinds of keys

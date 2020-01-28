@@ -8,22 +8,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.samayah.infra.BusinessException;
 import br.com.samayah.model.Users;
-import br.com.samayah.services.MyUserDetailsService;
 
 @RestController
 @RequestMapping("api/v1/")
 public class LoginController {
 
 	@Autowired
-	private MyUserDetailsService muds;
+	private br.com.samayah.service.MyUserDetailsService muds;
 	
 	@RequestMapping(value = "users", method = RequestMethod.POST)
 	public Users saveUser(@RequestBody Users user) throws BusinessException {
-	//public Users saveUser(@RequestBody Users user, @RequestHeader (name="Authorization") String token) {        
 		
-		  try { Thread.sleep(500); } catch (InterruptedException e) { 
-		  e.printStackTrace(); }
-		 
 		muds.save(user);        
         
 		user.setPassword("");
