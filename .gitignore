@@ -36,3 +36,8 @@
 /.mvn
 
 
+/bin/
+/LICENSE
+/README.md
+/mvnw
+/mvnw.cmd
